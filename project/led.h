@@ -1,3 +1,4 @@
+
 #ifndef _LED_
 #define _LED_
 
@@ -5,7 +6,7 @@
 #define LED_GREEN BIT6
 #define LEDS (BIT0 | BIT6)
 
-extern char led;
+void init_led();
 
 void led_red();
 
