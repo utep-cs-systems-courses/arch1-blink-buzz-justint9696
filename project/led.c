@@ -28,7 +28,7 @@ void led_all() {
 }
 
 void led_off() {
-  P1OUT &= ~1;
+  P1OUT &= 0;
 }
 
 char toggle_led() {
