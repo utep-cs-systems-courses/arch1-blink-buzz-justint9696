@@ -8,7 +8,7 @@ AS		= msp430-elf-as
 
 all: main.elf
 
-main.elf: ${COMMON_OBJECTS} uimain.o led.o button.o wdInterruptHandler.o
+main.elf: ${COMMON_OBJECTS} uimain.o led.o button.o wdInterruptHandler.o p1_interrupt_handler.o timerLib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ 
 
 clean:
