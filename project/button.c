@@ -4,7 +4,8 @@
 #include "button.h"
 
 /* 
- * Program contains 
+ * Program contains code to detect button presses on msp430. Pressing button stops or resumes
+ * led cycle.
  *
  */
 
