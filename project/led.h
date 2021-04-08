@@ -6,6 +6,9 @@
 #define LED_GREEN BIT6
 #define LEDS (BIT0 | BIT6)
 
+extern char led_timer;
+extern char led_state;
+
 void init_led();
 
 void led_red();
@@ -16,6 +19,12 @@ void led_all();
 
 void led_off();
 
-char toggle_led();
+void toggle_led();
+
+void toggle_timer();
+
+char get_state();
+
+char get_timer();
 
 #endif
