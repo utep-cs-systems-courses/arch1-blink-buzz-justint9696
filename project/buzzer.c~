@@ -1,8 +1,0 @@
-#include <msp430.h>
-
-#include "buzzer.h"
-
-void init_buzzer() {
-
-}
-
