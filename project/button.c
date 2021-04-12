@@ -37,6 +37,7 @@ void button_interrupt_handler() {
   if (button_pressed) {
     set_buzzer(1000);
     if (!button_state_changed) {
+      toggle_timer();
       button_state_changed = 1;
     }
   } else {
@@ -45,7 +46,4 @@ void button_interrupt_handler() {
       button_state_changed = 0;
     }
   }
-  
-  if (button_state_changed)
-    toggle_timer();
 }
