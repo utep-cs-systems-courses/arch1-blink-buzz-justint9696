@@ -31,10 +31,11 @@ void led_all() {
 }
 
 void led_off() {
+  P1OUT &= (0xff ^ LEDS) | LEDS;
   P1OUT &= ~1;
 }
 
-void toggle_led() {
+void toggle_state() {
   switch (led_state) {
   case 0:
     led_state = 1;

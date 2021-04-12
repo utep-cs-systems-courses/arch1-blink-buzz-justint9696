@@ -11,10 +11,10 @@ int main(void) {
   init_led();
   init_button();
   init_buzzer();
-  set_tone(1000);
-  
-  enableWDTInterrupts();
 
+  enableWDTInterrupts();
+  
   or_sr(0x18);
+  
   return 1;
 }

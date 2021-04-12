@@ -11,7 +11,7 @@ void init_buzzer() {
   P2DIR = BIT6;
 }
 
-void set_tone(short cycles) {
+void set_buzzer(short cycles) {
   CCR0 = cycles;
   CCR1 = cycles >> 1;
 }

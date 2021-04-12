@@ -2,6 +2,7 @@
 
 #include "led.h"
 #include "button.h"
+#include "buzzer.h"
 
 /* 
  * Program contains code to detect button presses on msp430. Pressing button stops or resumes
@@ -9,32 +10,42 @@
  *
  */
 
-void init_button() {
-  P1REN |= BUTTON;
-  P1IE |= BUTTON;
-  P1OUT |= BUTTON;
-  P1DIR &= ~BUTTON;
+char button_pressed = 0;
+char button_state_changed = 0;
 
-  toggle_led();
+void init_button() {
+  P2REN |= BUTTONS;
+  P2IE |= BUTTONS;
+  P2OUT |= BUTTONS;
+  P2DIR &= ~BUTTONS;
+
+  toggle_state();
   button_handler();
 }
 
 static char button_handler() {
-  char p1val = P1IN;
-  P1IES |= (P1IN & BUTTON);
-  P1IES &= (P1IN | ~BUTTON);
+  char p2val = P2IN;
+  P2IES |= (P2IN & BUTTONS);
+  P2IES &= (P2IN | ~BUTTONS);
 
-  return p1val;
+  return p2val;
 }
 
-void monitor_button() {
-  char p1val = button_handler();
-  static char button_pressed = 0;
-  if (p1val & BUTTON) {
-    if (!button_pressed) {
-      toggle_timer();
-      button_pressed = 1;
+void button_interrupt_handler() {
+  char p2val = button_handler();
+  button_pressed = (p2val & BTN1) ? 0 : 1;
+  if (button_pressed) {
+    set_buzzer(1000);
+    if (!button_state_changed) {
+      button_state_changed = 1;
     }
-  } else
-    button_pressed = 0;
+  } else {
+    set_buzzer(0);
+    if (button_state_changed) {
+      button_state_changed = 0;
+    }
+  }
+  
+  if (button_state_changed)
+    toggle_timer();
 }

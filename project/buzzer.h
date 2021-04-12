@@ -3,6 +3,6 @@
 
 void init_buzzer();
 
-void set_tone(short cycles);
+void set_buzzer(short cycles);
 
 #endif

@@ -19,7 +19,7 @@ void led_all();
 
 void led_off();
 
-void toggle_led();
+void toggle_state();
 
 void toggle_timer();
 

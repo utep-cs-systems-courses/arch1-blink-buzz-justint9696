@@ -2,9 +2,9 @@
 
 #include "button.h"
 
-void __interrupt_vec(PORT1_VECTOR) Port1() {
-  if (P1IFG & BUTTON) {
-    P1IFG &= ~BUTTON;
-    monitor_button();
+void __interrupt_vec(PORT2_VECTOR) Port2() {
+  if (P2IFG & BUTTONS) {
+    P2IFG &= ~BUTTONS;
+    button_interrupt_handler();
   }
 }
