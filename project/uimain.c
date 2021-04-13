@@ -11,7 +11,8 @@ int main(void) {
   init_led();
   init_button();
   init_buzzer();
-
+  set_buzzer(0);
+  
   enableWDTInterrupts();
   
   or_sr(0x18);

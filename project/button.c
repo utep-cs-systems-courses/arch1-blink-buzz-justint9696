@@ -41,8 +41,8 @@ void button_interrupt_handler() {
       button_state_changed = 1;
     }
   } else {
-    set_buzzer(0);
     if (button_state_changed) {
+      set_buzzer(0);
       button_state_changed = 0;
     }
   }
