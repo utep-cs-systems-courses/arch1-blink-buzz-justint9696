@@ -31,8 +31,7 @@ void led_all() {
 }
 
 void led_off() {
-  P1OUT &= (0xff ^ LEDS) | LEDS;
-  P1OUT &= ~1;
+  P1OUT &= ~LEDS;
 }
 
 void toggle_state() {
